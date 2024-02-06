@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Monitoring System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Machine Monitoring System</h1>
+
+    <!-- User registration form -->
+    <div id="userRegistration">
+      <h2>User Registration</h2>
+      <input type="text" id="userName" placeholder="Enter your name">
+      <button onclick="registerUser()">Register</button>
+    </div>
+
+    <!-- Machine setup form -->
+    <div id="machineSetup" style="display: none;">
+      <h2>Machine Setup</h2>
+      <input type="text" id="machineName" placeholder="Enter machine name">
+      <input type="text" id="machineType" placeholder="Enter machine type">
+      <button onclick="setupMachine()">Save</button>
+    </div>
+
+    <!-- Sensor data display -->
+    <div id="sensorData" style="display: none;">
+      <h2>Sensor Data</h2>
+      <table id="sensorDataTable">
+        <thead>
+          <tr>
+            <th>Temperature (°C)</th>
+            <th>Vibration</th>
+            <th>Runtime (hours)</th>
+          </tr>
+        </thead>
+        <tbody id="sensorDataBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
