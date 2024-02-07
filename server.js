@@ -1,27 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors()); // Add parentheses after cors
 
 // Dummy database to store user data
 let userData = "lohith";
 
-// Endpoint to register user
 app.post('/register', (req, res) => {
   const { userName } = req.body;
+  console.log(userName);
+
+  // Assuming userData is an array of registered usernames
+  const userData = ["user1", "user2", "user3"]; 
+
   if (!userName || userName.trim() === '') {
     return res.status(400).send('Please provide a valid username.');
   }
-  data = userData ==userName;
-  if(data){
-  return res.sendStatus(200);
-  }
-  else{
-    return res.sendStatus(404);
+
+  if (userData.includes(userName)) { // Check if the username exists in the userData array
+    return res.sendStatus(200); // Send success status if the username exists
+  } else {
+    return res.sendStatus(404); // Send not found status if the username does not exist
   }
 });
 

@@ -1,19 +1,29 @@
 let userName = '';
 
 async function registerUser() {
-  userName = document.getElementById('userName').value;
-  if (userName.trim() !== '') {
+  const userName = document.getElementById('userName').value.trim(); // Fix: Add const keyword and trim the input value
+
+  console.log("name is",userName);
+  if (userName !== '') {
     try {
-      const response = await fetch('/register', {
+      console.log("called")
+      const response = await fetch("http://localhost:3000/register", { // Fix: Add missing forward slash in the URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userName: userName })
       });
+
       if (!response.ok) {
         throw new Error('Registration failed');
       }
+      else{
+        alert('Registration Done');
+      }
+
+      
+
       document.getElementById('userRegistration').style.display = 'none';
       document.getElementById('machineSetup').style.display = 'block';
     } catch (error) {
@@ -24,6 +34,7 @@ async function registerUser() {
     alert('Please enter your name.');
   }
 }
+
 
 async function setupMachine() {
   const machineName = document.getElementById('machineName').value;
