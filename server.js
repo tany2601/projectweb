@@ -8,7 +8,7 @@ const PORT = 3000;
 app.use(bodyParser.json());
 
 // Dummy database to store user data
-let userData = {};
+let userData = "lohith";
 
 // Endpoint to register user
 app.post('/register', (req, res) => {
@@ -16,8 +16,13 @@ app.post('/register', (req, res) => {
   if (!userName || userName.trim() === '') {
     return res.status(400).send('Please provide a valid username.');
   }
-  userData[userName] = {};
-  res.sendStatus(200);
+  data = userData ==userName;
+  if(data){
+  return res.sendStatus(200);
+  }
+  else{
+    return res.sendStatus(404);
+  }
 });
 
 // Endpoint to setup machine
